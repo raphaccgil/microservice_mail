@@ -11,10 +11,8 @@ import os
 class MailPrepare:
 
     def __init__(self):
-        path = os.path.abspath(os.path.join('.', os.pardir))
         log_file = (os.path.dirname(__file__))
         log_file = re.sub('/business', '', log_file)
-        print(log_file)
         for root, dirs, files in os.walk(log_file, topdown=False):
             for name in files:
                 if name == 'config.ini':

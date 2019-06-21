@@ -69,13 +69,12 @@ class TestMongoConn:
                      'sensor_coll',
                      'mongodb://ec2-3-14-14-152.us-east-2.compute.amazonaws.com:27017/test')
 
-        time_gen = datetime.now() - timedelta(days=1)
+        time_gen = datetime.now() - timedelta(days=20)
         time_unn = int(time.mktime(time_gen.timetuple())*1000)
 
         flag = test_conn.check_act_sensor('Carlos', 1001, time_unn)
 
-        assert flag == 0 or flag == 1
-
+        assert flag[0] == 0 or flag[0] == 1
 
 if __name__ == "__main__":
     TestMongoConn().check_act_sensor_test()

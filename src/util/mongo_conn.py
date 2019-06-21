@@ -1,6 +1,6 @@
-'''
+"""
 Routine to manipulate from mongoDB
-'''
+"""
 
 from pymongo import MongoClient, errors, DESCENDING
 from pprint import pprint
@@ -51,20 +51,26 @@ class MongoConn:
         Collect the values only higher than a defined value
         :return: If has, at least, one element
         """
+        val = []
         try:
             values = self.album.find({'name_patient': name_user,
-                                        'id_patient': name_id,
+                                        'id_patient': int(name_id),
                                         'datetime_int': {'$gte': time_unix}}).limit(1)
             try:
-                val = values[0]['datetime_int']
+                print('OK')
+                print(values[0])
                 flag = 0
+                val.append(flag)
+                val.append(values[0]['game_selection'])
             except:
+                print('ERRO1')
                 flag = 1
+                val.append(flag)
         except:
+            flag = 2
+            val.append(flag)
             print('Error')
-        return flag
 
+        return val
 
-
-        return values
 
