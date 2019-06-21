@@ -35,7 +35,7 @@ class MainRout:
         test_conn.mongodb_conn('reahbilitation_db_test',
                                'sensor_coll',
                                'mongodb://ec2-3-14-14-152.us-east-2.compute.amazonaws.com:27017/test')
-        time_gen = datetime.now() - timedelta(days=40)
+        time_gen = datetime.now() - timedelta(minutes=1)
         time_unn = int(time.mktime(time_gen.timetuple())*1000)
         flag = test_conn.check_act_sensor(self.username, self.userid, time_unn)
         if flag[0] == 0:
